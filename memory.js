@@ -26,6 +26,10 @@ class Memory {
             for (let i = 0; i < size; i++) {
                 this.set(toIndex + i, this.get(fromIndex + 1));
             }
+        } else {
+            for (let i = size - 1; i >= 0; i--) {
+                this.set(toIndex + i, this.get(fromIndex + 1));
+            }
         }
     }
 
