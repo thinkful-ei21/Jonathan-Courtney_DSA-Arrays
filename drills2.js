@@ -46,36 +46,34 @@ const maxSum = arr => {
 
 // console.log(maxSum([4, 6, -3, 5, -2, 1]));
 
-const mergeArr = (arr1, arr2) => {
-  const newArr = [...arr1, ...arr2];
-  newArr.sort((a, b) => {
-    return a - b;
-  });
-  return newArr;
-};
-
-// we tried :(
-
 // const mergeArr = (arr1, arr2) => {
-//   const firstArr = arr1;
-//   const secondArr = arr2;
-//   let newArr = [];
-
-//   for (let i = 0; i < firstArr.length; i++) {
-//     if (firstArr[i] <= secondArr[0]) {
-//       newArr.push(firstArr[i]);
-//       firstArr.slice(1);
-//     } else if (firstArr[i] > secondArr[0]) {
-//       newArr.push(secondArr[0]);
-//       secondArr.slice(1);
-//     }
-//   }
+//   const newArr = [...arr1, ...arr2];
+//   newArr.sort((a, b) => {
+//     return a - b;
+//   });
 //   return newArr;
 // };
 
-// runtime complexity = O(pretty complex) could totaly be optimized :D
+// we tried :(
 
-console.log(mergeArr([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
+const mergeArr = (arr1, arr2) => {
+  const array = [...arr1, ...arr2];
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 1; j < array.length; j++) {
+      if (array[j - 1] > array[j]) {
+        let temp = array[j - 1];
+        array[j - 1] = array[j];
+        array[j] = temp;
+      }
+    }
+  }
+  return array;
+};
+
+// runtime complexity = O(n^2)
+
+// console.log(mergeArr([1, 3, 6, 8, 11], [2, 3, 5, 8, 9, 10]));
 
 const removeChar = (str, takerOuters) => {
   let newStr = str;
@@ -94,3 +92,11 @@ const removeChar = (str, takerOuters) => {
 };
 
 // console.log(removeChar('Battle of the Vowels: Hawaii vs. Grozny', 'ae'));
+
+const products = arr => {
+  const arrayTotal = arr.reduce((product, value) => product * value);
+  return arr.map(value => arrayTotal / value);
+};
+// console.log(products([10, 4, 5, 2, 1]));
+
+// runtime complexity O(n)
