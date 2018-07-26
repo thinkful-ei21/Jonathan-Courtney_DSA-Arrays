@@ -100,3 +100,45 @@ const products = arr => {
 // console.log(products([10, 4, 5, 2, 1]));
 
 // runtime complexity O(n)
+
+const array2D = matrix => {
+  const zeroRows = [];
+  const zeroCols = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let row = matrix[i];
+    for (let j = 0; j < row.length; j++) {
+      const item = row[j];
+      if (item === 0) {
+        zeroRows[i] = true;
+        zeroCols[j] = true;
+      }
+    }
+  }
+
+  for (let i = 0; i < matrix.length; i++) {
+    let row = matrix[i];
+    for (let j = 0; j < row.length; j++) {
+      if (zeroRows[i] || zeroCols[j]) {
+        row[j] = 0;
+      }
+    }
+  }
+  return matrix;
+};
+
+// console.log(
+//   array2D([
+//     [1, 0, 1, 1, 0],
+//     [0, 1, 1, 1, 0],
+//     [1, 1, 1, 1, 1],
+//     [1, 0, 1, 1, 1],
+//     [1, 1, 1, 1, 1]
+//   ])
+// );
+
+const stringRot = (str1, str2) => {
+  return (str2 + str2).indexOf(str1) !== -1;
+};
+
+// console.log(stringRot('amazon', 'azonam'));
